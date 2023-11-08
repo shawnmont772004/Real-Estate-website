@@ -7,11 +7,14 @@ import SignUp from "./pages/SignUp.jsx"
 import SignIn from "./pages/SignIn.jsx"
 import Profile from "./pages/Profile.jsx"
 
+import Header from "./components/Header.jsx"
+
 function App() {
   return (
     <>
     <div>
       <Router>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<About />}/>
