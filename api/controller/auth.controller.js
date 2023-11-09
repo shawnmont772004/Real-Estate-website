@@ -2,7 +2,7 @@ import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs"
 
     //console.log(req.body) gives the json data like username, password and emaill that is typed in the body which is client req
-export const SignUp = async(req,res) =>{
+export const SignUp = async(req,res,next) =>{
         const { userName, Password, Email } = req.body;
         const hashPassword = bcryptjs.hashSync(Password,10);
         const newUser = new User({userName,Password : hashPassword ,Email}); 
@@ -12,6 +12,7 @@ export const SignUp = async(req,res) =>{
         }
         catch(error)
         {
-            res.status(500).json(error.message);
+            //res.status(500).json(error.message); without next and errorHandler
+            next(error);
         }
 };
