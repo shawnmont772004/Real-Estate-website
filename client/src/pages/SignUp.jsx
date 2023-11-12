@@ -50,7 +50,7 @@ function SignUp() {
     }
   };
   return (
-    <div className="max-w-sm  mt-16 mx-24 sm:mx-auto" >
+    <div className="max-w-sm  mt-16 mx-28 sm:mx-auto" >
      <div >
         <h1 className="font-semibold ml-24 sm:ml-36 text-2xl mb-5 ">Sign up</h1>
       </div>

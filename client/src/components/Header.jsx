@@ -21,8 +21,8 @@ function Header() {
                         <FaSearch className="text-slate-700"/>
                     </form>
                 </div>
-                <div>
-                    <ul className="flex gap-16 items-center" >
+                <div className="ml-4">
+                    <ul className="flex sm:gap-12 sm:items-center" >
                         <Link to="/">
                             <li className="hidden sm:inline hover:bg-slate-300 p-2 rounded-md text-xl"><Link to='/'>Home</Link></li>
                         </Link>
@@ -30,7 +30,7 @@ function Header() {
                             <li className="hidden sm:inline hover:bg-slate-300 p-2 rounded-md text-xl">About</li>
                         </Link>
                         <Link to='/SignIn'>
-                            <li className=" hover:bg-slate-300  p-2 mr-8 rounded-md sm:text-xl hover:no-underline hover:text-red-500">Sign In</li>
+                            <li className=" hover:bg-slate-300  p-2 mr-4 rounded-md sm:text-xl hover:no-underline hover:text-red-500">Sign In</li>
                         </Link>
                     </ul>
                 </div>

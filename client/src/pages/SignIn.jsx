@@ -1,8 +1,80 @@
-import React from 'react'
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 function SignIn() {
+  //reactjs hooks useState hook formData is array[0] and setFormData is array[1] and is a function
+  const [formData,setFormData] =useState({
+    Email:"",
+    Password:""
+  });
+  const [error,setError]=useState(null);
+  const [loading,setLoading]=useState(false);
+
+  //console.log(formData); for debugging changes  in the input text
+ 
+  const handleChange=(e)=>{
+    setFormData((prev)=>{
+      return {...prev,
+        [e.target.name]:e.target.value};
+    });
+  }//you can aso just use formData directky like in SignUp
+
+  const navg=useNavigate();
+
+  const handleSubmit= async(e)=>{
+    e.preventDefault();//to prevent the loss of data fetched from handleChange after refreshing the page
+    console.log(formData);
+    try{
+      setLoading(true);
+      
+      const res=await fetch('api/auth/SignIn',
+      {
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+        },
+        body:JSON.stringify(formData),
+      });
+
+      const data=await res.json();
+      console.log(data);
+
+      if(data.success=== false)
+      {
+        setLoading(false);
+        setError(data.message);
+        return;
+      }
+      setLoading(false);
+      setError(null);
+      navg('/');
+    }
+    catch(error)
+    {
+      setLoading(false);
+      setError(data.message);
+    }
+  }
+
   return (
-    <div>SignIn</div>
+    <div className="max-w-sm  mt-20 mx-28 sm:mx-auto">
+      <div>
+        <h1 className="font-semibold ml-20 sm:ml-36 p-2 text-2xl mb-5">Sign In</h1>
+      </div>
+      <div>
+       <form  onSubmit={ handleSubmit } className="flex flex-col gap-4">
+        <input onChange={ handleChange }  name="Email" type="text" placeholder='Email' className="sm:w-96 w-64 p-2 focus:outline-orange-300 border-2 border-gray-300 rounded-lg "/>
+        <input onChange={ handleChange } name="Password" type="text" placeholder='Password' className="sm:w-96 w-64 p-2 focus:outline-orange-300 border-2 border-gray-300 rounded-lg "/>
+        <button  disabled={loading} type='submit' className="p-2 bg-slate-700 sm:w-96 w-64 rounded-lg text-sm text-white">
+          {loading ? 'Loading...' : 'SIGN IN'}
+        </button>
+       </form>
+      </div>
+      <div>
+      {error && <p className='text-red-500 mt-5'>{error}</p>}
+      </div>
+    </div>
   )
 }
 
