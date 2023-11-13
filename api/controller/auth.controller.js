@@ -27,7 +27,7 @@ export const SignIn = async (req, res, next) => {
       if (!validUser) return next(errorHandler(404, 'User not found!'));
       const validPassword = bcryptjs.compareSync(Password, validUser.Password);
       if (!validPassword) return next(errorHandler(401, 'Wrong credentials!'));
-      const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
+      const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);//to generate a cookie for access
       const { Password: pass, ...rest } = validUser._doc;
       res
         .cookie('access_token', token, { httpOnly: true })

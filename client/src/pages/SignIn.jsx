@@ -7,6 +7,7 @@ import {
   signInSuccess,
   signInFailure,
 } from '../redux/user/userSlice';
+import Oauth from "../components/Oauth";
 
 function SignIn() {
   //reactjs hooks useState hook formData is array[0] and setFormData is array[1] and is a function
@@ -74,9 +75,10 @@ function SignIn() {
        <form  onSubmit={ handleSubmit } className="flex flex-col gap-4">
         <input onChange={ handleChange }  name="Email" type="text" placeholder='Email' className="sm:w-96 w-64 p-2 focus:outline-orange-300 border-2 border-gray-300 rounded-lg "/>
         <input onChange={ handleChange } name="Password" type="text" placeholder='Password' className="sm:w-96 w-64 p-2 focus:outline-orange-300 border-2 border-gray-300 rounded-lg "/>
-        <button  disabled={loading} type='submit' className="p-2 bg-slate-700 sm:w-96 w-64 rounded-lg text-sm text-white">
+        <button  disabled={loading} type='submit' className="p-2 bg-slate-700 sm:w-96 w-64 rounded-lg text-sm hover:opacity-90 disabled:opacity-80 text-white">
           {loading ? 'Loading...' : 'SIGN IN'}
         </button>
+        <Oauth/>
        </form>
       </div>
       <div>
