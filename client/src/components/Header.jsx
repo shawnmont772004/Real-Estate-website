@@ -22,16 +22,16 @@ function Header() {
                     </form>
                 </div>
                 <div className="ml-4">
-                    <ul className="flex sm:gap-12 sm:items-center" >
-                        <Link to="/">
-                            <li className="hidden sm:inline hover:bg-slate-300 p-2 rounded-md text-xl"><Link to='/'>Home</Link></li>
-                        </Link>
-                        <Link to="/About">
-                            <li className="hidden sm:inline hover:bg-slate-300 p-2 rounded-md text-xl">About</li>
-                        </Link>
-                        <Link to='/SignIn'>
-                            <li className=" hover:bg-slate-300  p-2 mr-4 rounded-md sm:text-xl hover:no-underline hover:text-red-500">Sign In</li>
-                        </Link>
+                    <ul className="flex sm:gap-12 sm:items-center">
+                        <li className="hidden sm:inline hover:bg-slate-300 p-2 rounded-md text-xl">
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li className="hidden sm:inline hover:bg-slate-300 p-2 rounded-md text-xl">
+                            <Link to="/About">About</Link>
+                        </li>
+                        <li className="hover:bg-slate-300 p-2 mr-4 rounded-md sm:text-xl hover:no-underline hover:text-red-500">
+                            <Link to="/SignIn">Sign In</Link>
+                        </li>
                     </ul>
                 </div>
             </nav>
