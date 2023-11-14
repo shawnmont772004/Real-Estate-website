@@ -10,6 +10,7 @@ export default function OAuth() {
   const handleGoogleClick = async () => {
     try {
       const provider = new GoogleAuthProvider();
+      provider.setCustomParameters({ prompt: 'select_account' });//popup even for a single user fed uo in the browser
       const auth = getAuth(app);
       const result = await signInWithPopup(auth, provider);
 
