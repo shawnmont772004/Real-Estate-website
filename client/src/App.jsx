@@ -8,6 +8,7 @@ import SignIn from "./pages/SignIn.jsx"
 import Profile from "./pages/Profile.jsx"
 
 import Header from "./components/Header.jsx"
+import PrivateRouter from "./components/PrivateRouter.jsx"
 
 function App() {
   return (
@@ -20,8 +21,10 @@ function App() {
           <Route path="/About" element={<About />}/>
           <Route path="/SignIn" element={<SignIn />}/>
           <Route path="/SignUp" element={<SignUp />}/>
-          <Route path="/Profile" element={<Profile />}/>
-          <Route path="*" element={<div>Page not Found</div>}/>
+          <Route element= {<PrivateRouter />} >
+            <Route path="/Profile" element={<Profile />}/>
+          </Route>
+            <Route path="*" element={<div>Page not Found</div>}/>
         </Routes>
       </Router>
     </div>
